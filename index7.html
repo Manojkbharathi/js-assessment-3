@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>
+      7. Create a form validation script using JavaScript and the DOM. The
+      script should validate the input fields before submitting the form and
+      display error messages for invalid fields.
+    </h2>
+    <h1>Enter details</h1>
+    <form id="form">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" />
+        <span id="nameError" class="error"></span>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" />
+        <span id="emailError" class="error"></span>
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="text" id="password" />
+        <span id="passwordError" class="error"></span>
+      </div>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <script>
+      clearError();
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const form = document.getElementById('form'),
+          name = document.getElementById('name').value,
+          password = document.getElementById('password').value,
+          email = document.getElementById('email').value;
+        if (name === '') {
+          displayMsg('nameError', 'name is mandatory');
+        }
+        if (email === '') {
+          displayMsg('emailError', 'Mail id is mandatory');
+        } else if (!isEmail(email)) {
+          displayMsg('emailError', 'mail is invalid');
+        }
+
+        if (password === '') {
+          displayMsg('passwordError', 'Password is mandatory');
+        }
+        if (
+          document.getElementById('nameError').innerHTML === '' &&
+          document.getElementById('emailError').innerHTML === '' &&
+          document.getElementById('passwordError').innerHTML === ''
+        ) {
+          form.submit();
+        }
+      });
+      function displayMsg(id, msg) {
+        const errorEle = document.getElementById(id);
+        errorEle.innerHTML = msg;
+      }
+      function isEmail(email) {
+        const regex =
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return regex.test(email);
+      }
+
+      function clearError() {
+        const errors = document.querySelectorAll('.error');
+        errors.forEach((error) => {
+          error.innerHTML = '';
+        });
+      }
+    </script>
+  </body>
+</html>
