@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Dynamic Content</title>
+  </head>
+  <body>
+    <h2>
+      6. Write JavaScript code that dynamically fetches data from an API and
+      updates the content of a specific HTML element with the retrieved data.
+    </h2>
+    <div id="dataElement">
+      <p>Loading...</p>
+    </div>
+
+    <button onclick="fetchDataAndUpdateElement()">clcik</button>
+    <script>
+      function fetchDataAndUpdateElement() {
+        let apiUrl = 'https://randomuser.me/api/';
+
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            var element = document.getElementById('dataElement');
+            const user = data.results[0];
+            const name = user.name.first + ' ' + user.name.last;
+            const imageUrl = user.picture.large;
+            const location = user.location.street.name;
+            element.innerHTML = `
+              <h2> Name: ${name}</h2>
+                            <h2>location: ${location}</h2>
+
+              <img src="${imageUrl}" alt="User Image">
+            `;
+          })
+          .catch((error) => {
+            console.log('Error:', error);
+          });
+      }
+    </script>
+  </body>
+</html>
