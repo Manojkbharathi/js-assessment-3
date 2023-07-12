@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h2>
+      4. Write a function capitalizeLastLetters(str) that takes a string as
+      input and returns a new string where the last letter of each word is
+      capitalized, and all other letters are in lowercase. Example:
+      capitalizeLastLetters(&quot;javascript is AWESOME&quot;); //
+      &quot;javascripT iS AWESOMe&quot;
+    </h2>
+    <label for="input">Enter your number:</label>
+    <input type="text" id="input" />
+    <button id="submit">Submit</button>
+    <h2>
+      Answer:
+      <h3 id="answer"></h3>
+    </h2>
+    <script>
+      const btn = document.getElementById('submit');
+      const input = document.getElementById('input');
+      const answer = document.getElementById('answer');
+
+      function capitalizeLastLetters(str) {
+        const words = str.split(' ');
+        const capitalizeWord = words.map((word) => {
+          const lastLetter = word.slice(-1).toUpperCase();
+          const balanceLetters = word.slice(0, -1).toLowerCase();
+          return balanceLetters + lastLetter;
+        });
+        return capitalizeWord.join(' ');
+      }
+      btn.addEventListener('click', () => {
+        const inputStr = input.value;
+        answer.textContent = capitalizeLastLetters(inputStr);
+      });
+    </script>
+  </body>
+</html>

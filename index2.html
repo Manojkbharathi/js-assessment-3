@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>
+      2. Write a function sortByLength(arr) that takes an array of strings as
+      input and returns a new array with the strings sorted by their lengths in
+      ascending order. Example: sortByLength([&quot;apple&quot;,
+      &quot;banana&quot;, &quot;cherry&quot;, &quot;date&quot;]); //
+      [&quot;date&quot;, &quot;apple&quot;, &quot;banana&quot;, &quot;cherry]
+    </h2>
+
+    <div>
+      <label for="input">Enter your input separated by comma:</label>
+      <input type="text" id="input" />
+      <button id="submit">Submit</button>
+      <h2>
+        Answer:
+        <h3 id="answer"></h3>
+      </h2>
+    </div>
+    <script>
+      const btn = document.getElementById('submit');
+      const input = document.getElementById('input');
+      const answer = document.getElementById('answer');
+
+      function sortByLength(arr) {
+        const sortedArr = arr.sort((a, b) => a.length - b.length);
+        return sortedArr;
+      }
+      btn.addEventListener('click', () => {
+        let inputArr = input.value.split(',').map((word) => word.trim());
+        const sortedArray = sortByLength(inputArr);
+        answer.textContent = sortedArray.join(', ');
+      });
+    </script>
+  </body>
+</html>

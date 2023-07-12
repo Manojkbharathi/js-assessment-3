@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>
+      5. Write a function findLargestNumber(arr) that takes an array of numbers
+      as input and returns the largest number in the array. Example:
+      findLargestNumber([1, 5, 3, 9, 2]); // 9
+    </h2>
+    <label for="input">Enter your number:</label>
+    <input type="text" id="input" />
+    <button id="submit">Submit</button>
+    <h2>
+      Answer:
+      <h3 id="answer"></h3>
+    </h2>
+
+    <script>
+      const btn = document.getElementById('submit');
+      const input = document.getElementById('input');
+      const answer = document.getElementById('answer');
+
+      function findLargestNumber(arr) {
+        const numbers = arr.split(',').map(Number);
+        const largestNum = Math.max(...numbers);
+        return largestNum;
+      }
+
+      btn.addEventListener('click', () => {
+        const inputNumbers = input.value;
+        if (isNaN.inputNumbers) {
+          alert('Enter only numbers');
+        } else {
+          answer.textContent = findLargestNumber(inputNumbers);
+        }
+      });
+    </script>
+  </body>
+</html>
