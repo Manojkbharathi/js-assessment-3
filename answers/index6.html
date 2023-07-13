@@ -21,7 +21,7 @@
         fetch(apiUrl)
           .then((response) => response.json())
           .then((data) => {
-            var element = document.getElementById('dataElement');
+            let element = document.getElementById('dataElement');
             const user = data.results[0];
             const name = user.name.first + ' ' + user.name.last;
             const imageUrl = user.picture.large;

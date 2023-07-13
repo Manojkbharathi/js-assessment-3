@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Modal Window Example</title>
+  </head>
+  <body>
+    <h2>
+      10. Implement a function that creates a modal window (popup) with
+      customizable content and controls to close the modal, using JavaScript and
+      the DOM.
+    </h2>
+    <h1>Modal Window Example</h1>
+    <button onclick="openModal()">Open Modal</button>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Customize your Content here</h2>
+        <p></p>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById('myModal');
+
+      function openModal() {
+        modal.style.display = 'flex';
+      }
+
+      function closeModal() {
+        modal.style.display = 'none';
+      }
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      };
+    </script>
+  </body>
+</html>
