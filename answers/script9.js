@@ -8,7 +8,8 @@ function loadContent() {
 
   const xhr = new XMLHttpRequest();
 
-  const url = 'http://127.0.0.1:5500/index6.html';
+  const url =
+    'https://manojkbharathi.github.io/js-assessment-3//answers/index10.html';
 
   xhr.open('GET', url, true);
   xhr.onreadystatechange = function () {
